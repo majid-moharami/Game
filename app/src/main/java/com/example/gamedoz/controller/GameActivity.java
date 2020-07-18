@@ -22,6 +22,5 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.fragment_container,new TicTacToeFragment()).commit();
-
     }
 }

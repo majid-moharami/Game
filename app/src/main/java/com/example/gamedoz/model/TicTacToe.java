@@ -62,6 +62,18 @@ public class TicTacToe {
                 return Conditions.NOT_FINISHED;
             }
         }
+
+        if (gameChart[0][0]==gameChart[1][1] && gameChart[1][1] == gameChart[2][2]){
+            if (gameChart[0][0] == Players.X) return Conditions.X_WINS;
+            if (gameChart[0][0] == Players.O) return Conditions.O_WINS;
+        }
+
+        if (gameChart[0][2]==gameChart[1][1] && gameChart[1][1] == gameChart[2][0]){
+            if (gameChart[0][2] == Players.X) return Conditions.X_WINS;
+            if (gameChart[0][2] == Players.O) return Conditions.O_WINS;
+
+        }
+
         return Conditions.DRAW;
     }
 }
