@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2D4253"
+    android:gravity="bottom|center"
+    android:orientation="vertical"
+    tools:context=".fragments.TicTacToeFragment" >
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView_player_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="60dp"
+            android:layout_weight="1"
+            android:text="@string/player_1"
+            android:textColor="#E8E5E5"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView_player_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_weight="1"
+            android:text="@string/player_2"
+            android:textColor="#E8E5E5"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="170dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView_player_1_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="90dp"
+            android:layout_weight="1"
+            android:text="@string/_0"
+            android:textColor="#E8E5E5"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView_player_2_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_weight="1"
+            android:text="@string/_0"
+            android:textColor="#E8E5E5"
+            android:textSize="18sp" />
+    </LinearLayout>
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginBottom="20dp"
+       android:orientation="horizontal">
+       <TextView
+           android:id="@+id/textView_turn"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/turn_player"
+           android:textColor="#FFFFFF"
+           android:textSize="20dp"/>
+
+       <TextView
+           android:id="@+id/textView_turn_player"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text=" 1 "
+           android:textColor="#10FF00"
+           android:textSize="20dp"
+           android:textStyle="bold" />
+   </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        >
+
+        <Button
+            android:id="@+id/button1"
+            android:background="@drawable/tic_tac_btn_background"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+             />
+
+        <Button
+            android:id="@+id/button2"
+            android:background="@drawable/tic_tac_btn_background"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+
+        <Button
+            android:id="@+id/button3"
+            android:background="@drawable/tic_tac_btn_background"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+             />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        >
+
+        <Button
+            android:id="@+id/button4"
+            android:background="@drawable/tic_tac_btn_background"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            />
+
+        <Button
+            android:id="@+id/button5"
+            android:background="@drawable/tic_tac_btn_background"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+
+        <Button
+            android:id="@+id/button6"
+            android:background="@drawable/tic_tac_btn_background"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="50dp"
+        >
+
+        <Button
+            android:id="@+id/button7"
+            android:background="@drawable/tic_tac_btn_background"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            />
+
+        <Button
+            android:id="@+id/button8"
+            android:background="@drawable/tic_tac_btn_background"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+
+        <Button
+            android:id="@+id/button9"
+            android:background="@drawable/tic_tac_btn_background"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            />
+    </LinearLayout>
+</LinearLayout>

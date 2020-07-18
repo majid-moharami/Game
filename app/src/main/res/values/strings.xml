@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Game(Doz)</string>
+    <string name="tic_tac_toe">Tic Tac Toe</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="player_x">Player X</string>
+    <string name="player_o">Player O</string>
+    <string name="player_1">player 1</string>
+    <string name="player_2">player 2</string>
+    <string name="_0">0</string>
+    <string name="turn_player">Turn player :</string>
+</resources>
