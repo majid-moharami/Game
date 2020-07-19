@@ -13,6 +13,7 @@ public class TicTacToe {
             }
         }
     }
+    private Players zeroZero,oneOne,twoTwo,zeroTwo,oneOne2,twoZero;
 
     public Players[][] getGameChart(){
         return gameChart;
@@ -47,11 +48,20 @@ public class TicTacToe {
                 if (gameChart[i][0]==x) return Conditions.X_WINS;
                 if (gameChart[i][0]==o) return Conditions.O_WINS;
             }
-            if (gameChart[i][0]!=Players.E && gameChart[0][i]== gameChart[1][i] && gameChart[1][i] == gameChart[2][i] ){
-                if (gameChart[i][0]==x) return Conditions.X_WINS;
-                if (gameChart[i][0]==o) return Conditions.O_WINS;
+            if (gameChart[0][i]!=Players.E && gameChart[0][i]== gameChart[1][i] && gameChart[1][i] == gameChart[2][i] ){
+                if (gameChart[0][i]==x) return Conditions.X_WINS;
+                if (gameChart[0][i]==o) return Conditions.O_WINS;
             }
 
+        }
+
+        if (gameChart[0][0] == gameChart[1][1] && gameChart[1][1] == gameChart[2][2]){
+            if (gameChart[0][0] == Players.X) return Conditions.X_WINS;
+            if (gameChart[0][0] == Players.O) return Conditions.O_WINS;
+        }
+        if ( gameChart[0][2]==gameChart[1][1] && gameChart[1][1] == gameChart[2][0]){
+            if (gameChart[0][2] == Players.X) return Conditions.X_WINS;
+            if (gameChart[0][2] == Players.O) return Conditions.O_WINS;
         }
 
         for (int i = 0; i <3 ; i++) {
@@ -63,17 +73,13 @@ public class TicTacToe {
             }
         }
 
-        if (gameChart[0][0]==gameChart[1][1] && gameChart[1][1] == gameChart[2][2]){
-            if (gameChart[0][0] == Players.X) return Conditions.X_WINS;
-            if (gameChart[0][0] == Players.O) return Conditions.O_WINS;
-        }
-
-        if (gameChart[0][2]==gameChart[1][1] && gameChart[1][1] == gameChart[2][0]){
-            if (gameChart[0][2] == Players.X) return Conditions.X_WINS;
-            if (gameChart[0][2] == Players.O) return Conditions.O_WINS;
-
-        }
-
         return Conditions.DRAW;
+    }
+    public void restart(){
+        for (int i = 0; i <3 ; i++) {
+            for (int j = 0; j <3 ; j++) {
+                gameChart[i][j]= Players.E;
+            }
+        }
     }
 }

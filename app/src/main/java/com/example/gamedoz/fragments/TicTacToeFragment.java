@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.example.gamedoz.R;
 import com.example.gamedoz.model.Conditions;
 import com.example.gamedoz.model.Players;
 import com.example.gamedoz.model.TicTacToe;
+import com.google.android.material.snackbar.Snackbar;
 
 
 public class TicTacToeFragment extends Fragment {
@@ -122,9 +124,9 @@ public class TicTacToeFragment extends Fragment {
     // this method give the pressed button and return a suitable answer
     private char buttonStateAnswer(Button btn){
         if (btn.getText().equals("")){
-            if (mTurnPlayer.getText().equals("1"))
-                mTurnPlayer.setText("2");
-            else mTurnPlayer.setText("1");
+            if (mTurnPlayer.getText().equals("1(X)"))
+                mTurnPlayer.setText("2(O)");
+            else mTurnPlayer.setText("1(X)");
 
             turn = mTicTacToe.switchTurn();
             if (turn == Players.X){
@@ -181,12 +183,69 @@ public class TicTacToeFragment extends Fragment {
                 int p2 = Integer.parseInt((String) mPlayer2Points.getText());
                 mPlayer1Points.setText(String.valueOf(p1+1));
                 mPlayer2Points.setText(String.valueOf(p2+1));
+                sendSnackBar("any body won...");
+                restartGame();
             }else if (mTicTacToe.isFinished() == Conditions.X_WINS){
                 int p1 = Integer.parseInt((String) mPlayer1Points.getText());
                 mPlayer1Points.setText(String.valueOf(p1+1));
+                sendSnackBar("player 1 is win ;)");
+                restartGame();
             }else if (mTicTacToe.isFinished() == Conditions.O_WINS){
                 int p2= Integer.parseInt((String) mPlayer2Points.getText());
                 mPlayer2Points.setText(String.valueOf(p2+1));
+                sendSnackBar("player 2 is win ;)");
+                restartGame();
             }
+    }
+    private void restartGame(){
+        mButton1.setClickable(false);
+        mButton2.setClickable(false);
+        mButton3.setClickable(false);
+        mButton4.setClickable(false);
+        mButton5.setClickable(false);
+        mButton6.setClickable(false);
+        mButton7.setClickable(false);
+        mButton8.setClickable(false);
+        mButton9.setClickable(false);
+        CountDownTimer timer = new CountDownTimer(5000, 5000) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                mButton1.setText("");
+                mButton2.setText("");
+                mButton3.setText("");
+                mButton4.setText("");
+                mButton5.setText("");
+                mButton6.setText("");
+                mButton7.setText("");
+                mButton8.setText("");
+                mButton9.setText("");
+                mTicTacToe.restart();
+                mButton1.setClickable(true);
+                mButton2.setClickable(true);
+                mButton3.setClickable(true);
+                mButton4.setClickable(true);
+                mButton5.setClickable(true);
+                mButton6.setClickable(true);
+                mButton7.setClickable(true);
+                mButton8.setClickable(true);
+                mButton9.setClickable(true);
+            }
+        };
+        timer.start();
+    }
+
+    private void sendSnackBar(String s){
+        Snackbar snackbar = Snackbar.make(getView(), s, Snackbar.LENGTH_LONG)
+                .setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Snackbar snackbar1 = Snackbar.make(getView(), "play again...", Snackbar.LENGTH_SHORT);
+                        snackbar1.show();
+                    }
+                });
+
+        snackbar.show();
     }
 }
