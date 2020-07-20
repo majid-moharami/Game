@@ -9,4 +9,5 @@
     <string name="player_2">player 2 (O)</string>
     <string name="_0">0</string>
     <string name="turn_player">Turn player :</string>
+    <string name="turn_color">Turn color :</string>
 </resources>

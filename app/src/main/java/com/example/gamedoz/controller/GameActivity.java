@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.RelativeLayout;
 
 import com.example.gamedoz.R;
+import com.example.gamedoz.fragments.FourInRowFragment;
 import com.example.gamedoz.fragments.TicTacToeFragment;
 
 public class GameActivity extends AppCompatActivity {
@@ -21,6 +22,6 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.fragment_container,new TicTacToeFragment()).commit();
+        fragmentManager.beginTransaction().add(R.id.fragment_container,new FourInRowFragment()).commit();
     }
 }

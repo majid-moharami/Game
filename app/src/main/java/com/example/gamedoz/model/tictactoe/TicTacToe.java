@@ -1,4 +1,6 @@
-package com.example.gamedoz.model;
+package com.example.gamedoz.model.tictactoe;
+
+import com.example.gamedoz.model.Conditions;
 
 public class TicTacToe {
     private Players[][] gameChart;
@@ -13,7 +15,6 @@ public class TicTacToe {
             }
         }
     }
-    private Players zeroZero,oneOne,twoTwo,zeroTwo,oneOne2,twoZero;
 
     public Players[][] getGameChart(){
         return gameChart;
@@ -36,9 +37,7 @@ public class TicTacToe {
         else if (start==Players.O){
             start=x;
             return x;
-        }
-
-        else return x;
+        } else return x;
     }
 
     public Conditions isFinished(){

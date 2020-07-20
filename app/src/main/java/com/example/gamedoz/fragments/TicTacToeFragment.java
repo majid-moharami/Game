@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.example.gamedoz.R;
 import com.example.gamedoz.model.Conditions;
-import com.example.gamedoz.model.Players;
-import com.example.gamedoz.model.TicTacToe;
+import com.example.gamedoz.model.tictactoe.Players;
+import com.example.gamedoz.model.tictactoe.TicTacToe;
 import com.google.android.material.snackbar.Snackbar;
 
 
