@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gamedoz.R;
+import com.example.gamedoz.model.Conditions;
 import com.example.gamedoz.model.fourinrow.FourInRow;
 import com.example.gamedoz.model.fourinrow.player;
 import com.example.gamedoz.model.tictactoe.Players;
+import com.google.android.material.snackbar.Snackbar;
 
 
 public class FourInRowFragment extends Fragment {
@@ -242,7 +245,7 @@ public class FourInRowFragment extends Fragment {
             Toast.makeText(getActivity(), "its already filled here...", Toast.LENGTH_SHORT).show();
     }
 
-    //get the button and check which column will fill , it send the column number to  fillChartHelper(int a) method
+    //get the button and check which column will fill , it send the column number to  fillChartHelper(int a) method and check finish
     private void fillChart(Button b){
         if (b==mButton1||b==mButton6||b==mButton11||b==mButton16||b==mButton21){
             fillChartHelper(0);
@@ -255,6 +258,7 @@ public class FourInRowFragment extends Fragment {
         }else {
             fillChartHelper(4);
         }
+        checkFinish();
     }
     //this method get the column and fill the empty element in this column in chart,and set satr and soton var for filling ui
     private void fillChartHelper(int a){
@@ -366,5 +370,128 @@ public class FourInRowFragment extends Fragment {
                 mButton25.setBackgroundColor(color);
             }
         }
+    }
+
+
+    private void checkFinish(){
+        if (mFourInRow.checkFinish() != Conditions.NOT_FINISHED)
+            if (mFourInRow.checkFinish() == Conditions.DRAW){
+                int p1 = Integer.parseInt((String) mTextViewBluePoint.getText());
+                int p2 = Integer.parseInt((String) mTextViewRedPoint.getText());
+                mTextViewBluePoint.setText(String.valueOf(p1+1));
+                mTextViewRedPoint.setText(String.valueOf(p2+1));
+                sendSnackBar("any body won...");
+                restartGame();
+            }else if (mFourInRow.checkFinish() == Conditions.BLUE_WIN){
+                int p1 = Integer.parseInt((String) mTextViewBluePoint.getText());
+                mTextViewBluePoint.setText(String.valueOf(p1+1));
+                sendSnackBar("Blue is win ;)");
+                restartGame();
+            }else if (mFourInRow.checkFinish() == Conditions.RED_WIN){
+                int p2= Integer.parseInt((String) mTextViewRedPoint.getText());
+                mTextViewRedPoint.setText(String.valueOf(p2+1));
+                sendSnackBar("Red is win ;)");
+                restartGame();
+            }
+    }
+
+    private void restartGame(){
+        mButton1.setClickable(false);
+        mButton2.setClickable(false);
+        mButton3.setClickable(false);
+        mButton4.setClickable(false);
+        mButton5.setClickable(false);
+        mButton6.setClickable(false);
+        mButton7.setClickable(false);
+        mButton8.setClickable(false);
+        mButton9.setClickable(false);
+        mButton10.setClickable(false);
+        mButton11.setClickable(false);
+        mButton12.setClickable(false);
+        mButton13.setClickable(false);
+        mButton14.setClickable(false);
+        mButton15.setClickable(false);
+        mButton16.setClickable(false);
+        mButton17.setClickable(false);
+        mButton18.setClickable(false);
+        mButton19.setClickable(false);
+        mButton20.setClickable(false);
+        mButton21.setClickable(false);
+        mButton22.setClickable(false);
+        mButton23.setClickable(false);
+        mButton24.setClickable(false);
+        mButton25.setClickable(false);
+        CountDownTimer timer = new CountDownTimer(5000, 5000) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                mButton1.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton2.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton3.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton4.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton5.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton6.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton7.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton8.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton9.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton10.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton11.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton12.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton13.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton14.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton15.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton16.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton17.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton18.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton19.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton20.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton21.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton22.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton23.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton24.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mButton25.setBackgroundResource(R.drawable.background_btn_4inrow);
+                mFourInRow.restart();
+                mButton1.setClickable(true);
+                mButton2.setClickable(true);
+                mButton3.setClickable(true);
+                mButton4.setClickable(true);
+                mButton5.setClickable(true);
+                mButton6.setClickable(true);
+                mButton7.setClickable(true);
+                mButton8.setClickable(true);
+                mButton9.setClickable(true);
+                mButton10.setClickable(true);
+                mButton11.setClickable(true);
+                mButton12.setClickable(true);
+                mButton13.setClickable(true);
+                mButton14.setClickable(true);
+                mButton15.setClickable(true);
+                mButton16.setClickable(true);
+                mButton17.setClickable(true);
+                mButton18.setClickable(true);
+                mButton19.setClickable(true);
+                mButton20.setClickable(true);
+                mButton21.setClickable(true);
+                mButton22.setClickable(true);
+                mButton23.setClickable(true);
+                mButton24.setClickable(true);
+                mButton25.setClickable(true);
+            }
+        };
+        timer.start();
+    }
+
+    private void sendSnackBar(String s){
+        Snackbar snackbar = Snackbar.make(getView(), s, Snackbar.LENGTH_LONG)
+                .setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Snackbar snackbar1 = Snackbar.make(getView(), "play again...", Snackbar.LENGTH_SHORT);
+                        snackbar1.show();
+                    }
+                });
+
+        snackbar.show();
     }
 }
