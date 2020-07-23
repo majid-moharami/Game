@@ -1,5 +1,6 @@
 package com.example.gamedoz.controller;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,12 +15,15 @@ import com.example.gamedoz.R;
 import com.example.gamedoz.fragments.FourInRowFragment;
 import com.example.gamedoz.fragments.TicTacToeFragment;
 
+import java.io.Serializable;
+
 public class GameActivity extends AppCompatActivity {
 
     private Context mContext;
     private GameActivity mActivity;
     private RelativeLayout mRelativeLayout;
     private Button mButtonTicTac, mButtonRow;
+    private Fragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +31,22 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         findView();
 
-
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.fragment_container,new FourInRowFragment()).commit();
+
+        mFragment = fragmentManager.findFragmentById(R.id.fragment_container);
+        if (mFragment == null) {
+            fragmentManager.beginTransaction().add(R.id.fragment_container, new TicTacToeFragment()).commit();
+        }
 
         allListener();
     }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //getSupportFragmentManager().putFragment(outState, "myFragment", myFragment);
+    }
+
 
     private void allListener() {
         mButtonTicTac.setOnClickListener(new View.OnClickListener() {
@@ -61,8 +75,8 @@ public class GameActivity extends AppCompatActivity {
 
     private void loadFragment(Fragment f) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment ff = fragmentManager.findFragmentById(R.id.fragment_container);
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, f).commit();
+        mFragment = f;
+        fragmentManager.beginTransaction().replace(R.id.fragment_container, f).commit();
 
     }
 }

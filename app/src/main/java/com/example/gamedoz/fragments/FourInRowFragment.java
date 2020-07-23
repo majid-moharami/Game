@@ -22,6 +22,7 @@ import com.example.gamedoz.model.fourinrow.player;
 import com.example.gamedoz.model.tictactoe.Players;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 
@@ -45,11 +46,7 @@ public class FourInRowFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            Log.i("majid", "id instance");
-            mFourInRow = (FourInRow) savedInstanceState.getSerializable(BUNDLE_KEY_FOURINROW_OBJECT);
-            Log.i("majid", mFourInRow.toString());
-        } else mFourInRow = new FourInRow();
+        mFourInRow = new FourInRow();
 
     }
 
@@ -62,6 +59,7 @@ public class FourInRowFragment extends Fragment {
         allListener();
         if (savedInstanceState != null) {
             Log.i("majid", "id instance");
+            mFourInRow = (FourInRow) savedInstanceState.getSerializable(BUNDLE_KEY_FOURINROW_OBJECT);
             mTextViewRedPoint.setText(savedInstanceState.getString(BUNDLE_KEY_POINT_RED));
             mTextViewBluePoint.setText(savedInstanceState.getString(BUNDLE_KEY_POINT_BLUE));
             if (Objects.equals(savedInstanceState.getString(BUNDLE_KEY_TURN_TEXT_VIEW), "Blue")) {
@@ -81,7 +79,7 @@ public class FourInRowFragment extends Fragment {
         Log.i("majid", "onSaveInstance");
         outState.putSerializable(BUNDLE_KEY_FOURINROW_OBJECT, mFourInRow);
         outState.putString(BUNDLE_KEY_TURN_TEXT_VIEW, String.valueOf(mTextViewTurn.getText()));
-        outState.putString(BUNDLE_KEY_POINT_BLUE, "10");
+        outState.putString(BUNDLE_KEY_POINT_BLUE, mTextViewBluePoint.getText().toString());
         outState.putString(BUNDLE_KEY_POINT_RED, String.valueOf(mTextViewRedPoint.getText()));
     }
 
