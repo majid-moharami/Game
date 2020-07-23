@@ -40,14 +40,6 @@ public class GameActivity extends AppCompatActivity {
 
         allListener();
     }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        //getSupportFragmentManager().putFragment(outState, "myFragment", myFragment);
-    }
-
-
     private void allListener() {
         mButtonTicTac.setOnClickListener(new View.OnClickListener() {
             @Override

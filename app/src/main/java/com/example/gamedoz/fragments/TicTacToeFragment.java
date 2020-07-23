@@ -1,5 +1,6 @@
 package com.example.gamedoz.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,10 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class TicTacToeFragment extends Fragment {
 
+    public static final String BUNDLE_KEY_PLAYER1_POINTS = "put1";
+    public static final String BUNDLE_KEY_PLAYER2_POINTS = "put2";
+    public static final String BUNDLE_KEY_TURN_TEXT = "put3";
+    public static final String BUNDLE_KEY_TIC_TAC_TOE_OBJECT = "put4";
     private Button mButton1, mButton2, mButton3, mButton4, mButton5, mButton6, mButton7, mButton8, mButton9;
     private TextView mPlayer1Points, mPlayer2Points, mTurnPlayer;
     private TicTacToe mTicTacToe;
@@ -30,7 +35,7 @@ public class TicTacToeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mTicTacToe = new TicTacToe();
+
     }
 
     @Override
@@ -41,15 +46,22 @@ public class TicTacToeFragment extends Fragment {
         findAllView(view);
         allListener();
         if (savedInstanceState != null) {
-            mPlayer1Points.setText(savedInstanceState.getString("put1"));
-        }
+            mPlayer1Points.setText(savedInstanceState.getString(BUNDLE_KEY_PLAYER1_POINTS));
+            mPlayer2Points.setText(savedInstanceState.getString(BUNDLE_KEY_PLAYER2_POINTS));
+            mTurnPlayer.setText(savedInstanceState.getString(BUNDLE_KEY_TURN_TEXT));
+            mTicTacToe = (TicTacToe) savedInstanceState.getSerializable(BUNDLE_KEY_TIC_TAC_TOE_OBJECT);
+            fillUiAfterRotate();
+        }else  mTicTacToe = new TicTacToe();
         return view;
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("put1", mPlayer1Points.getText().toString());
+        outState.putString(BUNDLE_KEY_PLAYER1_POINTS, mPlayer1Points.getText().toString());
+        outState.putString(BUNDLE_KEY_PLAYER2_POINTS, mPlayer2Points.getText().toString());
+        outState.putString(BUNDLE_KEY_TURN_TEXT, mTurnPlayer.getText().toString());
+        outState.putSerializable(BUNDLE_KEY_TIC_TAC_TOE_OBJECT, mTicTacToe);
     }
 
     private void findAllView(View view) {
@@ -155,9 +167,11 @@ public class TicTacToeFragment extends Fragment {
     private void buttonAction(Button btn) {
         char action = buttonStateAnswer(btn);
         if (action == 'x') {
+            btn.setTextColor(Color.CYAN);
             btn.setText("X");
             fillGameChart(btn);
         } else if (action == 'o') {
+            btn.setTextColor(Color.RED);
             btn.setText("O");
             fillGameChart(btn);
         } else
@@ -187,6 +201,81 @@ public class TicTacToeFragment extends Fragment {
         }
 
         checkFinish();
+    }
+
+    private void fillUiAfterRotate(){
+        if (mTicTacToe.getGameChart()[0][0]==Players.X) {
+            mButton1.setTextColor(Color.CYAN);
+            mButton1.setText("X");
+        }else if (mTicTacToe.getGameChart()[0][0]==Players.O){
+            mButton1.setTextColor(Color.RED);
+            mButton1.setText("O");
+        }
+
+        if (mTicTacToe.getGameChart()[0][1]==Players.X) {
+            mButton2.setTextColor(Color.CYAN);
+            mButton2.setText("X");
+        }else if (mTicTacToe.getGameChart()[0][1]==Players.O){
+            mButton2.setTextColor(Color.RED);
+            mButton2.setText("O");
+        }
+
+        if (mTicTacToe.getGameChart()[0][2]==Players.X) {
+            mButton3.setTextColor(Color.CYAN);
+            mButton3.setText("X");
+        }else if (mTicTacToe.getGameChart()[0][2]==Players.O){
+            mButton3.setTextColor(Color.RED);
+            mButton3.setText("O");
+        }
+
+        if (mTicTacToe.getGameChart()[1][0]==Players.X) {
+            mButton4.setTextColor(Color.CYAN);
+            mButton4.setText("X");
+        }else if (mTicTacToe.getGameChart()[1][0]==Players.O){
+            mButton4.setTextColor(Color.RED);
+            mButton4.setText("O");
+        }
+
+        if (mTicTacToe.getGameChart()[1][1]==Players.X) {
+            mButton5.setTextColor(Color.CYAN);
+            mButton5.setText("X");
+        }else if (mTicTacToe.getGameChart()[1][1]==Players.O){
+            mButton5.setTextColor(Color.RED);
+            mButton5.setText("O");
+        }
+
+        if (mTicTacToe.getGameChart()[1][2]==Players.X) {
+            mButton6.setTextColor(Color.CYAN);
+            mButton6.setText("X");
+        }else if (mTicTacToe.getGameChart()[1][2]==Players.O){
+            mButton6.setTextColor(Color.RED);
+            mButton6.setText("O");
+        }
+
+        if (mTicTacToe.getGameChart()[2][0]==Players.X) {
+            mButton7.setTextColor(Color.CYAN);
+            mButton7.setText("X");
+        }else if (mTicTacToe.getGameChart()[2][0]==Players.O){
+            mButton7.setTextColor(Color.RED);
+            mButton7.setText("O");
+        }
+
+        if (mTicTacToe.getGameChart()[2][1]==Players.X) {
+            mButton8.setTextColor(Color.CYAN);
+            mButton8.setText("X");
+        }else if (mTicTacToe.getGameChart()[2][1]==Players.O){
+            mButton8.setTextColor(Color.RED);
+            mButton8.setText("O");
+        }
+
+        if (mTicTacToe.getGameChart()[2][2]==Players.X) {
+            mButton9.setTextColor(Color.CYAN);
+            mButton9.setText("X");
+        }else if (mTicTacToe.getGameChart()[2][2]==Players.O) {
+            mButton9.setTextColor(Color.RED);
+            mButton9.setText("O");
+        }
+
     }
 
     private void checkFinish() {

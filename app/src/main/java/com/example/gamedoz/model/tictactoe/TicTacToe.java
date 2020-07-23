@@ -2,7 +2,9 @@ package com.example.gamedoz.model.tictactoe;
 
 import com.example.gamedoz.model.Conditions;
 
-public class TicTacToe {
+import java.io.Serializable;
+
+public class TicTacToe implements Serializable {
     private Players[][] gameChart;
     private Players x= Players.X;
     private Players o= Players.O;

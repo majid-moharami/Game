@@ -1,6 +1,7 @@
 package com.example.gamedoz.fragments;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -46,7 +47,10 @@ public class FourInRowFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mFourInRow = new FourInRow();
+//        if (savedInstanceState != null) {
+//            mFourInRow = (FourInRow) savedInstanceState.getSerializable(BUNDLE_KEY_FOURINROW_OBJECT);
+//            fillUiAfterRotate();
+//        } else mFourInRow = new FourInRow();
 
     }
 
@@ -58,8 +62,8 @@ public class FourInRowFragment extends Fragment {
         findAllView(view);
         allListener();
         if (savedInstanceState != null) {
-            Log.i("majid", "id instance");
             mFourInRow = (FourInRow) savedInstanceState.getSerializable(BUNDLE_KEY_FOURINROW_OBJECT);
+            fillUiAfterRotate();
             mTextViewRedPoint.setText(savedInstanceState.getString(BUNDLE_KEY_POINT_RED));
             mTextViewBluePoint.setText(savedInstanceState.getString(BUNDLE_KEY_POINT_BLUE));
             if (Objects.equals(savedInstanceState.getString(BUNDLE_KEY_TURN_TEXT_VIEW), "Blue")) {
@@ -69,7 +73,7 @@ public class FourInRowFragment extends Fragment {
                 mTextViewTurn.setText(savedInstanceState.getString(BUNDLE_KEY_TURN_TEXT_VIEW));
                 mTextViewTurn.setTextColor(Color.RED);
             }
-        }
+        }else mFourInRow = new FourInRow();
         return view;
     }
 
@@ -331,13 +335,13 @@ public class FourInRowFragment extends Fragment {
     private void fillUI(char c) {
         int color;
         if (c == 'b') {
-            color = 0xFF0000FF;
-        } else color = 0xFFFF0000;
+            color = R.drawable.back_blue_4inrow;
+        } else color = R.drawable.back_red_4inrow;
 
         if (mIntSatr == 0) {
             if (mIntSoton == 0) {
                 if (zeroZero == 0) {
-                    mButton1.setBackgroundColor(color);
+                    mButton1.setBackgroundResource(color);
                     zeroZero = 1;
                 } else {
                     Toast.makeText(getActivity(), "this column filled before...", Toast.LENGTH_SHORT).show();
@@ -345,7 +349,7 @@ public class FourInRowFragment extends Fragment {
                 }
             } else if (mIntSoton == 1) {
                 if (ZeroOne == 0) {
-                    mButton2.setBackgroundColor(color);
+                    mButton2.setBackgroundResource(color);
                     ZeroOne = 1;
                 } else {
                     Toast.makeText(getActivity(), "this column filled before...", Toast.LENGTH_SHORT).show();
@@ -353,7 +357,7 @@ public class FourInRowFragment extends Fragment {
                 }
             } else if (mIntSoton == 2) {
                 if (zeroTwo == 0) {
-                    mButton3.setBackgroundColor(color);
+                    mButton3.setBackgroundResource(color);
                     zeroTwo = 1;
                 } else {
                     Toast.makeText(getActivity(), "this column filled before...", Toast.LENGTH_SHORT).show();
@@ -361,7 +365,7 @@ public class FourInRowFragment extends Fragment {
                 }
             } else if (mIntSoton == 3) {
                 if (zeroThree == 0) {
-                    mButton4.setBackgroundColor(color);
+                    mButton4.setBackgroundResource(color);
                     zeroThree = 1;
                 } else {
                     Toast.makeText(getActivity(), "this column filled before...", Toast.LENGTH_SHORT).show();
@@ -369,7 +373,7 @@ public class FourInRowFragment extends Fragment {
                 }
             } else if (mIntSoton == 4) {
                 if (zeroFour == 0) {
-                    mButton5.setBackgroundColor(color);
+                    mButton5.setBackgroundResource(color);
                     zeroFour = 1;
                 } else {
                     Toast.makeText(getActivity(), "this column filled before...", Toast.LENGTH_SHORT).show();
@@ -378,55 +382,73 @@ public class FourInRowFragment extends Fragment {
             }
         } else if (mIntSatr == 1) {
             if (mIntSoton == 0) {
-                mButton6.setBackgroundColor(color);
+                mButton6.setBackgroundResource(color);
             } else if (mIntSoton == 1) {
-                mButton7.setBackgroundColor(color);
+                mButton7.setBackgroundResource(color);
             } else if (mIntSoton == 2) {
-                mButton8.setBackgroundColor(color);
+                mButton8.setBackgroundResource(color);
             } else if (mIntSoton == 3) {
-                mButton9.setBackgroundColor(color);
+                mButton9.setBackgroundResource(color);
             } else if (mIntSoton == 4) {
-                mButton10.setBackgroundColor(color);
+                mButton10.setBackgroundResource(color);
             }
         } else if (mIntSatr == 2) {
             if (mIntSoton == 0) {
-                mButton11.setBackgroundColor(color);
+                mButton11.setBackgroundResource(color);
             } else if (mIntSoton == 1) {
-                mButton12.setBackgroundColor(color);
+                mButton12.setBackgroundResource(color);
             } else if (mIntSoton == 2) {
-                mButton13.setBackgroundColor(color);
+                mButton13.setBackgroundResource(color);
             } else if (mIntSoton == 3) {
-                mButton14.setBackgroundColor(color);
+                mButton14.setBackgroundResource(color);
             } else if (mIntSoton == 4) {
-                mButton15.setBackgroundColor(color);
+                mButton15.setBackgroundResource(color);
             }
         } else if (mIntSatr == 3) {
             if (mIntSoton == 0) {
-                mButton16.setBackgroundColor(color);
+                mButton16.setBackgroundResource(color);
             } else if (mIntSoton == 1) {
-                mButton17.setBackgroundColor(color);
+                mButton17.setBackgroundResource(color);
             } else if (mIntSoton == 2) {
-                mButton18.setBackgroundColor(color);
+                mButton18.setBackgroundResource(color);
             } else if (mIntSoton == 3) {
-                mButton19.setBackgroundColor(color);
+                mButton19.setBackgroundResource(color);
             } else if (mIntSoton == 4) {
-                mButton20.setBackgroundColor(color);
+                mButton20.setBackgroundResource(color);
             }
         } else if (mIntSatr == 4) {
             if (mIntSoton == 0) {
-                mButton21.setBackgroundColor(color);
+                mButton21.setBackgroundResource(color);
             } else if (mIntSoton == 1) {
-                mButton22.setBackgroundColor(color);
+                mButton22.setBackgroundResource(color);
             } else if (mIntSoton == 2) {
-                mButton23.setBackgroundColor(color);
+                mButton23.setBackgroundResource(color);
             } else if (mIntSoton == 3) {
-                mButton24.setBackgroundColor(color);
+                mButton24.setBackgroundResource(color);
             } else if (mIntSoton == 4) {
-                mButton25.setBackgroundColor(color);
+                mButton25.setBackgroundResource(color);
             }
         }
     }
 
+    private void fillUiAfterRotate() {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (mFourInRow.getChart()[i][j]==player.BLUE) {
+                    mIntSatr=i;
+                    mIntSoton=j;
+                    fillUI('b');
+                }
+                if (mFourInRow.getChart()[i][j]==player.RED){
+                    mIntSatr=i;
+                    mIntSoton=j;
+                    fillUI('r');
+                }
+                if (mFourInRow.getChart()[i][j]==player.EMPTY)
+                    continue;
+            }
+        }
+    }
 
     private void checkFinish() {
         if (mFourInRow.checkFinish() != Conditions.NOT_FINISHED)
