@@ -24,7 +24,7 @@
             android:textColor="#F6F5F5" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_fouur_in_row"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

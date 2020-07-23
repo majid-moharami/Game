@@ -3,7 +3,9 @@ package com.example.gamedoz.model.fourinrow;
 import com.example.gamedoz.model.Conditions;
 import com.example.gamedoz.model.tictactoe.Players;
 
-public class FourInRow {
+import java.io.Serializable;
+
+public class FourInRow implements Serializable {
     private player[][] chart;
     private player blue = player.BLUE;
     private player red = player.RED;
